@@ -10,8 +10,6 @@ class Game {
 		//crear multiples bricks
 		let bricks = buildLevel (this, level1)
 
-
-
 		this.gameObjects = [this.ball, this.paddle, ...bricks];
 
 		new InputHandler (this.paddle); 
@@ -19,6 +17,9 @@ class Game {
 
 	update (deltaTime) {
 		this.gameObjects.forEach ((object) => {object.update(deltaTime)})
+
+		this.gameObjects = this.gameObjects.filter((object) => {return !object.destroyed});
+
 	}
 
 	draw (ctx) {
