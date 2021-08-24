@@ -6,15 +6,23 @@ class Brick {
 		this.image = new Image();
 		this.image.src = "/assets/images/block.png"
 		this.position = position;
-		this.size = {width: 80, height: 24}
+		this.width = 80, 
+		this.height = 24,
+		this.destroyed = false;
 	}
 
 	draw (ctx) {
-		ctx.drawImage (this.image, this.position.x, this.position.y, this.size.width, this.size.height);
+		ctx.drawImage (this.image, this.position.x, this.position.y, this.width, this.height);
 	}
 
 	update (deltatime) {
-
+		//console.log (this)
+		//console.log ("colision: " + detectCollision (this.game.ball, this))
+		if (detectCollision (this.game.ball, this)) {
+			this.game.ball.speed.y = -this.game.ball.speed.y;
+			//this.game.ball.speed.x = -this.game.ball.speed.x;
+			this.destroyed = true;
+		}
 	}
 	
 }

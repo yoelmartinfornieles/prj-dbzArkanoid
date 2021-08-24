@@ -19,7 +19,7 @@ update (deltatime) {
 	this.position.y += this.speed.y ; 
 
 	//colision con las paredes
-	
+
 	if (this.position.x > this.canvasWidth - this.radius || 
 		this.position.x < 0 ){
 			this.speed.x = -this.speed.x;
@@ -31,17 +31,10 @@ update (deltatime) {
 	
 	// Y si se pega contra el paddle?	
 
-	let ballBottom = this.position.y + this.radius;
-	let paddleTop = this.game.paddle.position.y;
-	let paddleLeft = this.game.paddle.position.x;
-	let paddleRight = this.game.paddle.position.x + this.game.paddle.width;
-
-	if ((ballBottom >= paddleTop) && 
-		(paddleLeft <= this.position.x) && 
-		(this.position.x + this.radius <= paddleRight)){
-		console.log ("colision!")
+	if (detectCollision (this, this.game.paddle)) {
 		this.speed.y = -this.speed.y;
-		this.position.y = this.game.paddle.position.y - this.radius;
+		//this.speed.x = -this.speed.x;
+		//this.position.y = this.game.paddle.position.y - this.radius;
 	}
 }
 
