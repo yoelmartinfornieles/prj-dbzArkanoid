@@ -1,7 +1,7 @@
 class Ball {
-	constructor (canvasWidth, canvasHeight) {
-		this.canvasWidth = canvasWidth;
-		this.canvasHeight = canvasHeight;
+	constructor (game) {
+		this.canvasWidth = game.canvasWidth;
+		this.canvasHeight = game.canvasHeight;
 		this.image = new Image;
 		this.image.src = `/assets/images/ball${Math.floor(Math.random() * 1)}.png`
 		this.speed = {x: 4, y: 2}

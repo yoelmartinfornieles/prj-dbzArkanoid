@@ -17,6 +17,8 @@ const game = {
 	deltaTime: 0,
 	timestamp: 0,
 	intervalId: undefined,
+	game: undefined,
+
 
 	init (){
 
@@ -24,11 +26,8 @@ const game = {
 		this.setCanvasDimensions ();
 		this.clearCanvas ();
 
-		this.paddle = new Paddle (this.canvasWidth, this.canvasHeight);
-
-		this.ball = new Ball (this.canvasWidth, this.canvasHeight);
-
-		new InputHandler (this.paddle); ad
+		this.game = new Game (this.canvasWidth,this.canvasHeight);
+		this.game.start();
 
 		this.gameLoop ();
 
@@ -52,13 +51,12 @@ const game = {
 		this.deltaTime = this.timestamp - this.lastTime;
 		this.lastTime = this.timestamp;
 
+		console.log(this.game)
+
 		this.clearCanvas ();
 
-		this.paddle.update (this.deltaTime);
-		this.paddle.draw (this.ctx)
-
-		this.ball.update (this.deltaTime);
-		this.ball.draw(this.ctx);
+		this.game.update (this.deltaTime);
+		this.game.draw (this.ctx);
 
 		this.intervalId = requestAnimationFrame (()=>this.gameLoop())
 	}
