@@ -51,7 +51,7 @@ const game = {
 		this.deltaTime = this.timestamp - this.lastTime;
 		this.lastTime = this.timestamp;
 
-		console.log(this.game)
+//		console.log(this.game)
 
 		this.clearCanvas ();
 
