@@ -27,7 +27,7 @@ const game = {
 		this.clearCanvas ();
 
 		this.game = new Game (this.canvasWidth,this.canvasHeight);
-		this.game.start();
+		//this.game.start();
 
 		this.gameLoop ();
 

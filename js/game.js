@@ -1,29 +1,146 @@
+const gameState = {
+	pause: 0,
+	running: 1,
+	menu: 2,
+	gameOver: 3,
+	newLevel: 4, 
+	gameCompleted: 5
+};
+
 class Game {
 	constructor (canvasWidth, canvasHeight) {
 		this.canvasWidth = canvasWidth;
 		this.canvasHeight = canvasHeight;
+		this.gameState = gameState.menu;
+		this.paddle = new Paddle (this);
+		this.ball = new Ball (this);
+		new InputHandler (this.paddle, this); 
+		this.gameObjects = [];
+		this.bricks = [];
+		this.lives = 5;
+
+		this.levels = [level1, level2];
+		this.currentLevel = 0;
 	}
 
 	start () {
-		this.paddle = new Paddle (this);
-		this.ball = new Ball (this);
+		if (this.gameState !== gameState.menu && this.gameState !== gameState.newLevel) {
+			return;
+		}
+
 		//crear multiples bricks
-		let bricks = buildLevel (this, level1)
+		this.bricks = buildLevel (this, this.levels[this.currentLevel]);
 
-		this.gameObjects = [this.ball, this.paddle, ...bricks];
+		this.ball.reset ();
 
-		new InputHandler (this.paddle); 
+		this.gameObjects = [this.ball, this.paddle]
+
+		this.gameState = gameState.running;
+
 	}
 
 	update (deltaTime) {
-		this.gameObjects.forEach ((object) => {object.update(deltaTime)})
 
-		this.gameObjects = this.gameObjects.filter((object) => {return !object.destroyed});
+		if (this.lives === 0){
+			this.gameState = gameState.gameOver;
+		}
+
+		if (
+			this.gameState === gameState.pause ||
+			this.gameState === gameState.menu ||
+			this.gameState === gameState.gameOver
+			){
+			return; //no actuaizamos nada
+		}
+
+		if (this.bricks.length === 0) {
+
+
+/* 			if (this.levels.length === this.currentLevel-1) {
+				console.log ("gameFinished")
+				this.gameState === gameState.gameCompleted;	
+			} */
+
+			console.log("No bricks");
+			this.currentLevel++;
+			this.gameState = gameState.newLevel;
+			this.start ();
+		}
+
+		let totalArray  = [...this.gameObjects, ...this.bricks];
+
+		totalArray.forEach ((object) => {object.update(deltaTime)})
+
+		this.bricks = this.bricks.filter((object) => {return !object.destroyed});
 
 	}
 
 	draw (ctx) {
-		this.gameObjects.forEach ((object) => {object.draw(ctx)})
+		
+		let totalArray  = [...this.gameObjects, ...this.bricks];
+
+		totalArray.forEach ((object) => {object.draw(ctx)})
+
+		//Life draw
+
+		if(this.gameState === gameState.running || this.gameState === gameState.pause) {
+			for (){}
+			let liveImage = new Image ();
+			liveImage.src = "/assets/images/lives.png"; 
+			ctx.drawImage (liveImage, 40, this.canvasHeight -60, 40, 40);
+			
+		}
+
+		//Paused draw 
+
+		if (this.gameState === gameState.pause){
+			ctx.rect(0,0, this.canvasWidth, this.canvasHeight);
+			ctx.fillStyle = "rgba(0,0,0,0.5)";
+			ctx.fill();
+
+			ctx.font = "30px Arial";
+			ctx.fillStyle = "white";
+			ctx.textAlign = "center";
+			ctx.fillText ("Paused", this.canvasWidth/2, this.canvasHeight/2);
+
+		}
+
+		//Menu draw 
+
+		if (this.gameState === gameState.menu){
+			ctx.rect(0,0, this.canvasWidth, this.canvasHeight);
+			ctx.fillStyle = "rgba(0,0,0,1)";
+			ctx.fill();
+
+			ctx.font = "30px Arial";
+			ctx.fillStyle = "white";
+			ctx.textAlign = "center";
+			ctx.fillText ("Press SPACEBAR to start the search", this.canvasWidth/2, this.canvasHeight/2);
+
+		}	
+
+		//GameOver draw
+
+		if (this.gameState === gameState.gameOver){
+			ctx.rect(0,0, this.canvasWidth, this.canvasHeight);
+			ctx.fillStyle = "rgba(0,0,0,1)";
+			ctx.fill();
+
+			ctx.font = "30px Arial";
+			ctx.fillStyle = "white";
+			ctx.textAlign = "center";
+			ctx.fillText ("Game Over!", this.canvasWidth/2, this.canvasHeight/2);
+
+		}	
+	
+	}
+
+	togglePause () {
+		if (this.gameState == gameState.pause){
+			this.gameState = gameState.running;
+		} else {
+			this.gameState = gameState.pause;
+		}
 	}
 }
 
