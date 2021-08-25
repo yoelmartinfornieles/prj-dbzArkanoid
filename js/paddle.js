@@ -14,8 +14,12 @@ class Paddle {
 		this.canvasWidth = game.canvasWidth;
 		this.canvasHeight = game.canvasHeight;
 
-	
-	
+	}
+
+	reset () {
+		this.position = {x: game.canvasWidth/2 - this.width/2, y: game.canvasHeight - this.height - 10}
+		console.log ("aqui")
+		this.speed = 0;
 	}
 
 	draw(ctx) {

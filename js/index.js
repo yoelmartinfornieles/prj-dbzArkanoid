@@ -18,6 +18,7 @@ const game = {
 	timestamp: 0,
 	intervalId: undefined,
 	game: undefined,
+	//this.gameover --> cancelAnimationFrame
 
 
 	init (){
@@ -46,6 +47,7 @@ const game = {
 
 	//loop del juego, aqui ocurren las cosas
 	gameLoop () {
+		//if (!this.gameOver){
 		this.timestamp ++;
 //		console.log("frameCounter: " + this.timestamp)
 		this.deltaTime = this.timestamp - this.lastTime;
@@ -59,6 +61,7 @@ const game = {
 		this.game.draw (this.ctx);
 
 		this.intervalId = requestAnimationFrame (()=>this.gameLoop())
+		
 	}
 
 } 

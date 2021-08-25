@@ -4,7 +4,8 @@ class Ball {
 		this.canvasWidth = game.canvasWidth;
 		this.canvasHeight = game.canvasHeight;
 		this.image = new Image;
-		this.image.src = `../assets/images/ball${Math.floor(Math.random() * 1)}.png`
+		this.image.src = "../assets/images/ball0.png"
+		//this.image.src = `../assets/images/ball${Math.floor(Math.random() * 1)}.png`
 		this.radius = 16;
 		this.reset();
 	}
@@ -38,6 +39,7 @@ update (deltatime) {
 	if (this.position.y > this.canvasHeight - this.radius){
 		this.game.lives --;
 		this.reset ();
+		this.game.paddle.reset ();
 	}
 	
 	// Y si se pega contra el paddle?	

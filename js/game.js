@@ -32,6 +32,7 @@ class Game {
 		this.bricks = buildLevel (this, this.levels[this.currentLevel]);
 
 		this.ball.reset ();
+		this.paddle.reset ();
 
 		this.gameObjects = [this.ball, this.paddle]
 
@@ -86,9 +87,9 @@ class Game {
 		if(this.gameState === gameState.running || this.gameState === gameState.pause) {
 			let liveImage = new Image ();
 			liveImage.src = "../assets/images/lives.png"; 
-			let initialPos = 55;
+			let initialPos = 35;
 			for (let i = 0; i<this.lives; i ++){
-				ctx.drawImage (liveImage, 40 + i*initialPos, initialPos-30, initialPos -5, initialPos -5);
+				ctx.drawImage (liveImage, 20 + i*initialPos, initialPos-30, initialPos -5, initialPos -5);
 			}
 		}
 
