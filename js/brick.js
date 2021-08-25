@@ -4,7 +4,7 @@ class Brick {
 		this.canvasWidth = game.canvasWidth;
 		this.canvasHeight = game.canvasHeight;
 		this.image = new Image();
-		this.image.src = `/assets/images/nube${Math.floor(Math.random() * 6)}.png`
+		this.image.src = `../assets/images/nube${Math.floor(Math.random() * 6)}.png`
 		this.position = position;
 		this.width = 80, 
 		this.height = 60,

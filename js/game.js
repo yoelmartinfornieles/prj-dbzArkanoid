@@ -84,11 +84,12 @@ class Game {
 		//Life draw
 
 		if(this.gameState === gameState.running || this.gameState === gameState.pause) {
-			for (){}
 			let liveImage = new Image ();
-			liveImage.src = "/assets/images/lives.png"; 
-			ctx.drawImage (liveImage, 40, this.canvasHeight -60, 40, 40);
-			
+			liveImage.src = "../assets/images/lives.png"; 
+			let initialPos = 55;
+			for (let i = 0; i<this.lives; i ++){
+				ctx.drawImage (liveImage, 40 + i*initialPos, initialPos-30, initialPos -5, initialPos -5);
+			}
 		}
 
 		//Paused draw 

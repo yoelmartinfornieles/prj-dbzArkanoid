@@ -22,7 +22,7 @@ if ((ballBottom >= objectTop) &&
 	(ballTop <= objectBottom) &&
 	(objectLeft <= ballLeft) && 
 	(ballRight <= objectRight)){
-	console.log ("Collision!")
+	//console.log ("Collision!")
 		return (true);
 }	else {
 		return (false);
