@@ -4,7 +4,7 @@ class Ball {
 		this.canvasWidth = game.canvasWidth;
 		this.canvasHeight = game.canvasHeight;
 		this.image = new Image;
-		this.image.src = `https://yoelmartinfornieles.github.io/pry-arkanoid/assets/images/ball${Math.floor(Math.random() * 1)}.png`
+		this.image.src = `https://github.com/yoelmartinfornieles/prj-dbzArkanoid/assets/images/ball${Math.floor(Math.random() * 1)}.png`
 		this.radius = 36;
 		this.reset();
 	}

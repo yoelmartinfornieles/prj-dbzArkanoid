@@ -18,17 +18,17 @@ class Game {
 		this.gameObjects = [];
 		this.bricks = [];
 		this.lives = 5;
-		this.levels = [level1]//, level2, level3, level4, level5, level6, level7];
+		this.levels = [level4, level2, level3, level4, level5, level6, level7];
 		this.currentLevel = 0;
 		this.gameCompletedImage = new Image ();
-		this.gameCompletedImage.src = "/assets/images/Gamecompleted.jpg"
+		this.gameCompletedImage.src = "https://github.com/yoelmartinfornieles/prj-dbzArkanoid/assets/images/Gamecompleted.jpg"
 		this.menuImage = new Image ();
-		this.menuImage.src = "/assets/images/startPicture.jpg";
+		this.menuImage.src = "https://github.com/yoelmartinfornieles/prj-dbzArkanoid/assets/images/startPicture.jpg";
 		this.gameOverImage = new Image ();
-		this.gameOverImage.src = "/assets/images/GameOver.jpg";
+		this.gameOverImage.src = "https://github.com/yoelmartinfornieles/prj-dbzArkanoid/assets/images/GameOver.jpg";
 		this.backgroundImage = new Image ();
-		//this.backgroundImage.src = `/assets/images/background${this.currentLevel}.jpeg`;
-		this.backgroundImage.src = `/assets/images/background1.jpeg`;
+		//this.backgroundImage.src = `https://github.com/yoelmartinfornieles/prj-dbzArkanoid/assets/images/background${this.currentLevel}.jpeg`;
+		this.backgroundImage.src = `https://github.com/yoelmartinfornieles/prj-dbzArkanoid/assets/images/background1.jpeg`;
 	}
 
 	start () {
@@ -122,7 +122,7 @@ class Game {
 
 		if(this.gameState === gameState.running || this.gameState === gameState.pause) {
 			let liveImage = new Image ();
-			liveImage.src = "https://yoelmartinfornieles.github.io/pry-arkanoid/assets/images/lives.png"; 
+			liveImage.src = "https://github.com/yoelmartinfornieles/prj-dbzArkanoid/assets/images/lives.png"; 
 			let initialPos = 35;
 			for (let i = 0; i<this.lives; i ++){
 				ctx.drawImage (liveImage, 20 + i*initialPos, initialPos-30, initialPos -5, initialPos -5);
