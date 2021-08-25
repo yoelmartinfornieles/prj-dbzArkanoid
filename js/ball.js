@@ -5,13 +5,13 @@ class Ball {
 		this.canvasHeight = game.canvasHeight;
 		this.image = new Image;
 		this.image.src = `https://yoelmartinfornieles.github.io/pry-arkanoid/assets/images/ball${Math.floor(Math.random() * 1)}.png`
-		this.radius = 16;
+		this.radius = 36;
 		this.reset();
 	}
 
 reset () {
-	this.speed = {x: 4, y: 8}
-	this.position = {x: 280, y:400}
+	this.speed = {x: 4, y: 10}
+	this.position = {x: 350, y:400}
 }
 
 draw (ctx) {

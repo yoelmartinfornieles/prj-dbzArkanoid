@@ -1,13 +1,14 @@
 class Brick {
-	constructor (game, position){
+	constructor (game, position, impacts){
 		this.game = game;
 		this.canvasWidth = game.canvasWidth;
 		this.canvasHeight = game.canvasHeight;
 		this.image = new Image();
-		this.image.src = `https://yoelmartinfornieles.github.io/pry-arkanoid/assets/images/nube${Math.floor(Math.random() * 6)}.png`
+		this.image.src = `/assets/images/nube${impacts}.png`
 		this.position = position;
 		this.width = 80, 
 		this.height = 60,
+		this.leftImpacts = impacts;
 		this.destroyed = false;
 	}
 
@@ -21,7 +22,10 @@ class Brick {
 		if (detectCollision (this.game.ball, this)) {
 			this.game.ball.speed.y = -this.game.ball.speed.y;
 			//this.game.ball.speed.x = -this.game.ball.speed.x;
-			this.destroyed = true;
+			this.leftImpacts--;
+			if(this.leftImpacts === 0){
+				this.destroyed = true;
+			}
 		}
 	}
 	

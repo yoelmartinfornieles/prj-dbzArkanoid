@@ -20,8 +20,8 @@ console.log("6: " ) */
 
 if ((ballBottom >= objectTop) && 
 	(ballTop <= objectBottom) &&
-	(objectLeft <= ballLeft) && 
-	(ballRight <= objectRight)){
+	(objectLeft <= ballRight) && 
+	(ballLeft <= objectRight)){
 	//console.log ("Collision!")
 		return (true);
 }	else {

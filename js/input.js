@@ -1,6 +1,7 @@
 class InputHandler {
 	constructor (paddle, game){
 		document.addEventListener('keydown', event => {
+			//alert (event.keyCode);
 			switch (event.keyCode){
 				case 37:
 				paddle.moveLeft();
@@ -8,6 +9,15 @@ class InputHandler {
 
 				case 39:
 				paddle.moveRight();
+				break;
+
+				//Hidden cheats
+				case 51:
+				game.lives++;
+				break;
+
+				case 57:
+				game.currentLevel++;
 				break;
 			}
 		})
@@ -33,7 +43,7 @@ class InputHandler {
 				game.togglePause ();
 				break;
 
-				case 32: 
+				case 80: 
 				game.start();
 				break;
 			}	

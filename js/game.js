@@ -18,9 +18,17 @@ class Game {
 		this.gameObjects = [];
 		this.bricks = [];
 		this.lives = 5;
-
-		this.levels = [level1, level2];
+		this.levels = [level1]//, level2, level3, level4, level5, level6, level7];
 		this.currentLevel = 0;
+		this.gameCompletedImage = new Image ();
+		this.gameCompletedImage.src = "/assets/images/Gamecompleted.jpg"
+		this.menuImage = new Image ();
+		this.menuImage.src = "/assets/images/startPicture.jpg";
+		this.gameOverImage = new Image ();
+		this.gameOverImage.src = "/assets/images/GameOver.jpg";
+		this.backgroundImage = new Image ();
+		//this.backgroundImage.src = `/assets/images/background${this.currentLevel}.jpeg`;
+		this.backgroundImage.src = `/assets/images/background1.jpeg`;
 	}
 
 	start () {
@@ -51,19 +59,42 @@ class Game {
 			this.gameState === gameState.menu ||
 			this.gameState === gameState.gameOver
 			){
-			return; //no actuaizamos nada
+			return; //no actualizamos nada
 		}
 
 		if (this.bricks.length === 0) {
 
-
-/* 			if (this.levels.length === this.currentLevel-1) {
-				console.log ("gameFinished")
-				this.gameState === gameState.gameCompleted;	
-			} */
-
-			console.log("No bricks");
 			this.currentLevel++;
+
+			if (this.levels.length <= this.currentLevel) {
+				console.log ("gameFinished")
+				this.gameState = gameState.gameCompleted;	
+/* 				console.log ("should be gameCompleted: " +this.gameState)
+				console.log ("and should match: "+ gameState.gameCompleted)
+				console.log ("So it gives: " + (this.gameState === gameState.gameCompleted)) */
+				//Gamecompleted draw
+				if (this.gameState === gameState.gameCompleted){
+					game.ctx.clearRect(0, 0, this.canvasWidth, this.canvasHeight);
+					game.ctx.drawImage(this.gameCompletedImage,0,0,this.canvasWidth, this.canvasHeight);
+
+					game.ctx.font = "45px DBZfont";
+					game.ctx.strokeStyle = "black";
+					game.ctx.lineWidth = 8;
+					game.ctx.textAlign = "center";
+					game.ctx.strokeText ("CONGRATULATIONS!", this.canvasWidth/2, this.canvasHeight/2);
+					game.ctx.strokeText ("You got the seven mystic Dragon Balls...", this.canvasWidth/2, this.canvasHeight/2 + 40);
+					game.ctx.strokeText ("What will you ask to Shenron?", this.canvasWidth/2, this.canvasHeight/2 + 80);
+
+					game.ctx.font = "45px DBZfont";
+					game.ctx.fillStyle = "red";
+					game.ctx.textAlign = "center";
+					game.ctx.fillText ("CONGRATULATIONS!", this.canvasWidth/2, this.canvasHeight/2);
+					game.ctx.fillText ("You got the seven mystic Dragon Balls...", this.canvasWidth/2, this.canvasHeight/2 + 40);
+					game.ctx.fillText ("What will you ask to Shenron?", this.canvasWidth/2, this.canvasHeight/2 + 80);
+				}	
+				return;
+			}
+
 			this.gameState = gameState.newLevel;
 			this.start ();
 		}
@@ -80,7 +111,12 @@ class Game {
 		
 		let totalArray  = [...this.gameObjects, ...this.bricks];
 
+		if (this.gameState !== gameState.gameCompleted){
+
+		game.ctx.drawImage(this.backgroundImage,0,0,this.canvasWidth, this.canvasHeight);
+
 		totalArray.forEach ((object) => {object.draw(ctx)})
+		}
 
 		//Life draw
 
@@ -93,6 +129,24 @@ class Game {
 			}
 		}
 
+		//Level draw
+
+		if(this.gameState === gameState.running || this.gameState === gameState.pause) {
+
+ 			ctx.font = "30px DBZfont";
+			ctx.strokeStyle = "black";
+			game.ctx.lineWidth = 8;
+			ctx.textAlign = "center";
+			ctx.strokeText (`Level: ${this.currentLevel+1}`, 930, 30); 
+			
+			
+			ctx.font = "30px DBZfont";
+			ctx.fillStyle = "red";
+			ctx.textAlign = "center";
+			ctx.fillText (`Level: ${this.currentLevel+1}`, 930, 30);
+
+		}
+
 		//Paused draw 
 
 		if (this.gameState === gameState.pause){
@@ -100,10 +154,19 @@ class Game {
 			ctx.fillStyle = "rgba(0,0,0,0.5)";
 			ctx.fill();
 
-			ctx.font = "30px Arial";
-			ctx.fillStyle = "white";
+			ctx.font = "200px DBZfont";
+			ctx.strokeStyle = "black";
+			game.ctx.lineWidth = 8;
 			ctx.textAlign = "center";
-			ctx.fillText ("Paused", this.canvasWidth/2, this.canvasHeight/2);
+			ctx.strokeText ("Kame...", this.canvasWidth/2, this.canvasHeight/2);
+			ctx.strokeText ("...Hame", this.canvasWidth/2, this.canvasHeight/2 + 160);
+
+			ctx.font = "200px DBZfont";
+			ctx.fillStyle = "red";
+			ctx.textAlign = "center";
+			ctx.fillText ("Kame...", this.canvasWidth/2, this.canvasHeight/2);
+			ctx.fillText ("...Hame", this.canvasWidth/2, this.canvasHeight/2 + 160);
+
 
 		}
 
@@ -111,13 +174,24 @@ class Game {
 
 		if (this.gameState === gameState.menu){
 			ctx.rect(0,0, this.canvasWidth, this.canvasHeight);
-			ctx.fillStyle = "rgba(0,0,0,1)";
-			ctx.fill();
 
-			ctx.font = "30px Arial";
-			ctx.fillStyle = "white";
+			ctx.fillStyle = "rgba(0,0,0,1)";
+			ctx.fill(); 
+
+			game.ctx.drawImage(this.menuImage,-200,200,this.canvasWidth, this.canvasHeight);
+
+			ctx.font = "80px DBZfont";
+			ctx.strokeStyle = "black";
+			game.ctx.lineWidth = 8;
 			ctx.textAlign = "center";
-			ctx.fillText ("Press SPACEBAR to start the search", this.canvasWidth/2, this.canvasHeight/2);
+			ctx.strokeText (`Press the "s" key`, this.canvasWidth/2 +150, this.canvasHeight/2-200);
+			ctx.strokeText (`to start the search`, this.canvasWidth/2 +150, this.canvasHeight/2-100);
+
+			ctx.font = "80px DBZfont";
+			ctx.fillStyle = "red";
+			ctx.textAlign = "center";
+			ctx.fillText (`Press the "s" key`, this.canvasWidth/2 +150, this.canvasHeight/2-200);
+			ctx.fillText (`to start the search`, this.canvasWidth/2 +150, this.canvasHeight/2-100);
 
 		}	
 
@@ -125,13 +199,24 @@ class Game {
 
 		if (this.gameState === gameState.gameOver){
 			ctx.rect(0,0, this.canvasWidth, this.canvasHeight);
-			ctx.fillStyle = "rgba(0,0,0,1)";
-			ctx.fill();
 
-			ctx.font = "30px Arial";
-			ctx.fillStyle = "white";
+			ctx.fillStyle = "rgba(0,0,0,1)";
+			ctx.fill(); 
+
+			game.ctx.drawImage(this.gameOverImage,0,0,this.canvasWidth +20, this.canvasHeight+20);
+
+			ctx.font = "80px DBZfont";
+			ctx.strokeStyle = "black";
+			game.ctx.lineWidth = 8;
 			ctx.textAlign = "center";
-			ctx.fillText ("Game Over!", this.canvasWidth/2, this.canvasHeight/2);
+			ctx.strokeText (`GAME OVER!`, this.canvasWidth/2 -150, this.canvasHeight/2+200);
+			ctx.strokeText (`You should train more...`, this.canvasWidth/2 -150, this.canvasHeight/2+100);
+
+			ctx.font = "80px DBZfont";
+			ctx.fillStyle = "red";
+			ctx.textAlign = "center";
+			ctx.fillText (`GAME OVER!`, this.canvasWidth/2 -150, this.canvasHeight/2+200);
+			ctx.fillText (`You should train more...`, this.canvasWidth/2 -150, this.canvasHeight/2+100);
 
 		}	
 	

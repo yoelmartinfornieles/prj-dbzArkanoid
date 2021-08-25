@@ -1,15 +1,15 @@
 class Paddle {
 	constructor (game) {
-		this.width = 150;
-		this.height = 20;
+		this.width = 190;
+		this.height = 60;
 
 		this.position = {
 			x: game.canvasWidth/2 - this.width/2 ,
-			y: game.canvasHeight - this.height - 10
+			y: game.canvasHeight - this.height
 		}
 
 		this.speed = 0;
-		this.maxSpeed = 7;
+		this.maxSpeed = 12;
 
 		this.canvasWidth = game.canvasWidth;
 		this.canvasHeight = game.canvasHeight;
@@ -17,7 +17,7 @@ class Paddle {
 	}
 
 	reset () {
-		this.position = {x: game.canvasWidth/2 - this.width/2, y: game.canvasHeight - this.height - 10}
+		this.position = {x: game.canvasWidth/2 - this.width/2, y: game.canvasHeight - this.height}
 		console.log ("aqui")
 		this.speed = 0;
 	}

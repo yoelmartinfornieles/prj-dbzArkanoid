@@ -18,8 +18,6 @@ const game = {
 	timestamp: 0,
 	intervalId: undefined,
 	game: undefined,
-	//this.gameover --> cancelAnimationFrame
-
 
 	init (){
 
@@ -39,15 +37,15 @@ const game = {
 	},
 	
 	setCanvasDimensions () {
-		this.canvasWidth = 800;
-		this.canvasHeight = 600;
+		this.canvasWidth = 1000;
+		this.canvasHeight = 700;
 		canvas.setAttribute("width", this.canvasWidth);
 		canvas.setAttribute("height", this.canvasHeight);
 	},
 
 	//loop del juego, aqui ocurren las cosas
 	gameLoop () {
-		//if (!this.gameOver){
+
 		this.timestamp ++;
 //		console.log("frameCounter: " + this.timestamp)
 		this.deltaTime = this.timestamp - this.lastTime;
@@ -61,6 +59,15 @@ const game = {
 		this.game.draw (this.ctx);
 
 		this.intervalId = requestAnimationFrame (()=>this.gameLoop())
+
+		if (this.game.gameState === gameState.gameOver){ 
+			cancelAnimationFrame (this.intervalId);
+		}
+
+		if (this.game.gameState === gameState.gameCompleted){ 
+
+			cancelAnimationFrame (this.intervalId);
+		}
 		
 	}
 
