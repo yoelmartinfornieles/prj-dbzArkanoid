@@ -111,9 +111,9 @@ class Game {
 		//console.log ("deltaTime: " + deltaTime);
 		//console.log ("this.game: " + this);
 
-		if (deltaTime % 1000 === Math.floor(Math.random () * 10)){
+		if (deltaTime % 2000 === Math.floor(Math.random () * 10)){
 			//console.log ("HADOUKEN!")
-			let powerUp = new PowerUp (this, {x: Math.floor(( Math.random()*this.canvasWidth)), y:Math.floor(( Math.random()*this.canvasWidth))});
+			let powerUp = new PowerUp (this, {x: Math.floor(( Math.random()*(this.canvasWidth-80))), y:Math.floor(( Math.random()*(this.canvasHeight)-80))});
 			this.bricks.push (powerUp);
 		}
 
@@ -201,14 +201,14 @@ class Game {
 			game.ctx.drawImage(this.menuImage,-200,200,this.canvasWidth, this.canvasHeight);
 
 			ctx.font = "80px DBZfont";
-			ctx.strokeStyle = "black";
+			ctx.strokeStyle = "rgb(240,198,97)";
 			game.ctx.lineWidth = 8;
 			ctx.textAlign = "center";
 			ctx.strokeText (`Press the "s" key`, this.canvasWidth/2 +150, this.canvasHeight/2-200);
 			ctx.strokeText (`to start the search`, this.canvasWidth/2 +150, this.canvasHeight/2-100);
 
 			ctx.font = "80px DBZfont";
-			ctx.fillStyle = "red";
+			ctx.fillStyle = "rgb(172,60,49)";
 			ctx.textAlign = "center";
 			ctx.fillText (`Press the "s" key`, this.canvasWidth/2 +150, this.canvasHeight/2-200);
 			ctx.fillText (`to start the search`, this.canvasWidth/2 +150, this.canvasHeight/2-100);
@@ -229,14 +229,14 @@ class Game {
 			ctx.strokeStyle = "black";
 			game.ctx.lineWidth = 8;
 			ctx.textAlign = "center";
-			ctx.strokeText (`GAME OVER!`, this.canvasWidth/2 -150, this.canvasHeight/2+200);
-			ctx.strokeText (`You should train more...`, this.canvasWidth/2 -150, this.canvasHeight/2+100);
+			ctx.strokeText (`GAME OVER!`, this.canvasWidth/2 -120, this.canvasHeight/2+200);
+			ctx.strokeText (`You should train more...`, this.canvasWidth/2 -120, this.canvasHeight/2+100);
 
 			ctx.font = "80px DBZfont";
-			ctx.fillStyle = "red";
+			ctx.fillStyle = "rgb(172,60,49)";
 			ctx.textAlign = "center";
-			ctx.fillText (`GAME OVER!`, this.canvasWidth/2 -150, this.canvasHeight/2+200);
-			ctx.fillText (`You should train more...`, this.canvasWidth/2 -150, this.canvasHeight/2+100);
+			ctx.fillText (`GAME OVER!`, this.canvasWidth/2 -120, this.canvasHeight/2+200);
+			ctx.fillText (`You should train more...`, this.canvasWidth/2 -120, this.canvasHeight/2+100);
 
 		}	
 

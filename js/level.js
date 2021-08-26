@@ -2,7 +2,7 @@ function buildLevel (game, level) {
 	let bricks = [];
 	level.forEach ((row, rowIndex) => {
 		let gapX = (game.canvasWidth-(53)) / ((row.length + 2));
-		console.log ("gapX: "+gapX)
+		//console.log ("gapX: "+gapX)
 		row.forEach((brick, brickIndex) => {
 			//console.log("row length" + row.length)
 			//Si el dato es un uno

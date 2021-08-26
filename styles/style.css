@@ -3,9 +3,157 @@
 	src: url("../assets/fonts/Saiyan-Sans.ttf") format("truetype");
 }
 
+@font-face {
+	font-family: typewriter;
+	src: url("/assets/fonts/JMH\ Typewriter.otf") format("truetype");
+}
+
+header > nav {
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+	justify-content: center;
+	background-color: rgb(27, 27, 27);
+	font-family: DBZfont;
+	font-size: 36px;
+	height:40px;
+}
+
+body{
+	margin:0;
+	border:0;
+	background-color: rgb(27, 27, 27);
+
+}
+
+.title{
+	margin:10px;
+}
+
+.title-text {
+	margin-top:10px;
+	margin-left: 5px;
+	text-decoration: none;
+	color: white;
+	-webkit-text-stroke: 1px black;
+}
+
+.body {
+	display: flex;
+}
+
+#container {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	margin-left:5px;
+}
+
+.links{
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	align-content: space-between;
+	border-radius: 5%;;
+	margin: 5px;
+	margin-bottom: 30px;
+	background-color: rgb(27, 27, 27);
+	font-family: Arial, Helvetica, sans-serif;
+	height: 20%;
+
+}
+
+.social-links {
+	margin: 10px;
+	border: 1px solid black;
+	width: 45px;
+	height: 45px;
+	border-radius:50%;
+	transition: 0.5s ease ;
+	background-color: white;
+}
+
+.social-links:hover {
+	border: 1px solid black;
+	box-shadow: 0px 0px 50px rgb(255, 187, 1);
+	width: 42px;
+	height: 42px;
+	border-radius:50%;
+	transition: 0.5s ease ;
+}
+
+#main {
+	display: flex;
+}
+
+.game {
+	margin-left:40px;
+	border: 1px solid white;
+}
+
+#side {
+	display: flex;
+	flex-direction: column;
+	background-color: rgb(27, 27, 27);
+
+}
+
+#story {
+	margin: 5px;
+	margin-top: 30px;
+	border: 1px solid black;
+	border-radius: 5%;
+	background-color: rgb(204, 203, 203);
+	height: 40%;
+	font-family: typewriter;
+	
+
+}
+
+#story > p{
+	margin: 5px;
+	margin-top: 40px;
+	text-align: center;
+	
+}
+
+#instructions {
+	margin-left: 5px;
+	margin-right: 5px;
+	border: 1px solid black;
+	border-radius: 5%;
+	background-color: rgb(204, 203, 203);
+	height: 40%;
+	font-family: typewriter;
+}
+
+#instructions > h3{
+	margin: 12px;
+	text-align: center;
+}
+
+#instructions > {
+	margin: 5px;
+	text-align: center;
+}
+
+#game {
+	display: flex;
+	background-color: rgb(27, 27, 27);
+} 
 
 #canvas1 {
-	border: 1px solid black;
+	border: 19px solid rgb(204, 203, 203);
+	border-radius: 30px;
+}
+
+footer {
+	font-family: typewriter;
+	background-color: rgb(27, 27, 27);
+	color: white;
+	text-align: center;
+
 }
 
 

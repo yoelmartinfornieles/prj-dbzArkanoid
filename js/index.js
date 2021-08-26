@@ -23,6 +23,7 @@ const game = {
 	game: undefined,
 
 	init (){
+		console.log("no cotilles la consola...")
 
 		this.ctx = canvas.getContext ("2d");
 		this.setCanvasDimensions ();
@@ -63,12 +64,12 @@ const game = {
 
 		if (this.game.gameState === gameState.gameOver){ 
 			cancelAnimationFrame (this.intervalId);
-			setTimeout ( () => 	game.init(), 3000) 
+			setTimeout ( () => 	game.init(), 5000) 
 		}
 
 		if (this.game.gameState === gameState.gameCompleted){ 
 			cancelAnimationFrame (this.intervalId);
-			setTimeout ( () => 	game.init(), 3000) 
+			setTimeout ( () => 	game.init(), 10000) 
 			
 		}
 

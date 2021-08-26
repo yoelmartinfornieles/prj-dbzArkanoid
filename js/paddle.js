@@ -21,7 +21,7 @@ class Paddle {
 
 	reset () {
 		this.position = {x: game.canvasWidth/2 - this.width/2, y: game.canvasHeight - this.height}
-		console.log ("aqui")
+		//console.log ("aqui")
 		this.speed = 0;
 	}
 
