@@ -1,14 +1,13 @@
 function buildLevel (game, level) {
 	let bricks = [];
 	level.forEach ((row, rowIndex) => {
-		let gapX = (game.canvasWidth) / ((row.length + 2));
-		let marginX = 80/3;
+		let gapX = (game.canvasWidth-(53)) / ((row.length + 2));
+		console.log ("gapX: "+gapX)
 		row.forEach((brick, brickIndex) => {
 			//console.log("row length" + row.length)
 			//Si el dato es un uno
 			if (brick !== 0){
-				let position = {x: (gapX + ((brickIndex * gapX))) - marginX , y: 75 + (rowIndex * 24) };
-				//console.log ("tetra: "+brick)
+				let position = {x: (gapX + ((brickIndex * gapX)))  , y: 75 + (rowIndex * 24) };
 				bricks.push(new Brick (game, position, brick))
 			}
 		});

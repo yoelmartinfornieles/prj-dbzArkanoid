@@ -16,6 +16,12 @@ class InputHandler {
 				game.lives++;
 				break;
 
+				case 54:
+					let powerUp = new PowerUp (game, {x: Math.floor(( Math.random()*game.canvasWidth)), y:Math.floor(( Math.random()*game.canvasWidth))});
+					//console.log("hello: " + powerUp.position.x)
+					game.bricks.push (powerUp);
+				break;
+
 				case 57:
 				game.currentLevel++;
 				break;
@@ -43,7 +49,7 @@ class InputHandler {
 				game.togglePause ();
 				break;
 
-				case 80: 
+				case 83: 
 				game.start();
 				break;
 			}	

@@ -13,8 +13,6 @@ const game = {
 	canvasWidth: undefined,
 	canvasHeight: undefined,
 	paddle: undefined,
-	lastTime: 0,
-	deltaTime: 0,
 	timestamp: 0,
 	intervalId: undefined,
 	game: undefined,
@@ -23,6 +21,7 @@ const game = {
 
 		this.ctx = canvas.getContext ("2d");
 		this.setCanvasDimensions ();
+
 		this.clearCanvas ();
 
 		this.game = new Game (this.canvasWidth,this.canvasHeight);
@@ -47,15 +46,12 @@ const game = {
 	gameLoop () {
 
 		this.timestamp ++;
-//		console.log("frameCounter: " + this.timestamp)
-		this.deltaTime = this.timestamp - this.lastTime;
-		this.lastTime = this.timestamp;
 
 //		console.log(this.game)
 
 		this.clearCanvas ();
 
-		this.game.update (this.deltaTime);
+		this.game.update (this.timestamp);
 		this.game.draw (this.ctx);
 
 		this.intervalId = requestAnimationFrame (()=>this.gameLoop())
@@ -67,6 +63,18 @@ const game = {
 		if (this.game.gameState === gameState.gameCompleted){ 
 
 			cancelAnimationFrame (this.intervalId);
+		}
+
+		if (this.game.gameState === gameState.pause ){
+			this.game.goku.update ();
+			this.game.goku.spriteHandler ();
+			//console.log (this.game.ctx)
+			this.game.goku.draw (this.game.ctx)
+
+/* 			this.game.kame.update ();
+			this.game.kame.spriteHandler ();
+			//console.log (this.game.ctx)
+			this.game.kame.draw (this.game.ctx) */
 		}
 		
 	}

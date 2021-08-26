@@ -14,21 +14,25 @@ class Game {
 		this.gameState = gameState.menu;
 		this.paddle = new Paddle (this);
 		this.ball = new Ball (this);
+		this.goku = new Goku (this);
+		this.kame = new Kame (this);
 		new InputHandler (this.paddle, this); 
 		this.gameObjects = [];
 		this.bricks = [];
 		this.lives = 5;
-		this.levels = [level4, level2, level3, level4, level5, level6, level7];
+		this.levels = [level1, level2, level3, level4, level5, level6, level7];
 		this.currentLevel = 0;
 		this.gameCompletedImage = new Image ();
-		this.gameCompletedImage.src = "https://github.com/yoelmartinfornieles/prj-dbzArkanoid/assets/images/Gamecompleted.jpg"
+		this.gameCompletedImage.src = "https://raw.githubusercontent.com/yoelmartinfornieles/prj-dbzArkanoid/main/assets/images/Gamecompleted.jpg"
 		this.menuImage = new Image ();
-		this.menuImage.src = "https://github.com/yoelmartinfornieles/prj-dbzArkanoid/assets/images/startPicture.jpg";
+		this.menuImage.src = "https://raw.githubusercontent.com/yoelmartinfornieles/prj-dbzArkanoid/main/assets/images/startPicture.jpg";
 		this.gameOverImage = new Image ();
-		this.gameOverImage.src = "https://github.com/yoelmartinfornieles/prj-dbzArkanoid/assets/images/GameOver.jpg";
+		this.gameOverImage.src = "https://raw.githubusercontent.com/yoelmartinfornieles/prj-dbzArkanoid/main/assets/images/GameOver.jpg";
 		this.backgroundImage = new Image ();
-		//this.backgroundImage.src = `https://github.com/yoelmartinfornieles/prj-dbzArkanoid/assets/images/background${this.currentLevel}.jpeg`;
-		this.backgroundImage.src = `https://github.com/yoelmartinfornieles/prj-dbzArkanoid/assets/images/background1.jpeg`;
+		//this.backgroundImage.src = `https://raw.githubusercontent.com/yoelmartinfornieles/prj-dbzArkanoid/main/assets/images/background${this.currentLevel}.jpeg`;
+		//this.backgroundImage.src = `https://raw.githubusercontent.com/yoelmartinfornieles/prj-dbzArkanoid/main/assets/images/background1.png`;
+		this.backgroundImage.src = `/assets/images/background1.png`;
+		this.ctx = undefined;
 	}
 
 	start () {
@@ -67,7 +71,7 @@ class Game {
 			this.currentLevel++;
 
 			if (this.levels.length <= this.currentLevel) {
-				console.log ("gameFinished")
+				//console.log ("gameFinished")
 				this.gameState = gameState.gameCompleted;	
 /* 				console.log ("should be gameCompleted: " +this.gameState)
 				console.log ("and should match: "+ gameState.gameCompleted)
@@ -99,6 +103,15 @@ class Game {
 			this.start ();
 		}
 
+		//console.log ("deltaTime: " + deltaTime);
+		//console.log ("this.game: " + this);
+
+		if (deltaTime % 1000 === Math.floor(Math.random () * 10)){
+			//console.log ("HADOUKEN!")
+			let powerUp = new PowerUp (this, {x: Math.floor(( Math.random()*this.canvasWidth)), y:Math.floor(( Math.random()*this.canvasWidth))});
+			this.bricks.push (powerUp);
+		}
+
 		let totalArray  = [...this.gameObjects, ...this.bricks];
 
 		totalArray.forEach ((object) => {object.update(deltaTime)})
@@ -108,6 +121,8 @@ class Game {
 	}
 
 	draw (ctx) {
+
+		this.ctx = ctx;
 		
 		let totalArray  = [...this.gameObjects, ...this.bricks];
 
@@ -116,13 +131,15 @@ class Game {
 		game.ctx.drawImage(this.backgroundImage,0,0,this.canvasWidth, this.canvasHeight);
 
 		totalArray.forEach ((object) => {object.draw(ctx)})
+
+
 		}
 
 		//Life draw
 
 		if(this.gameState === gameState.running || this.gameState === gameState.pause) {
 			let liveImage = new Image ();
-			liveImage.src = "https://github.com/yoelmartinfornieles/prj-dbzArkanoid/assets/images/lives.png"; 
+			liveImage.src = "https://raw.githubusercontent.com/yoelmartinfornieles/prj-dbzArkanoid/main/assets/images/lives.png"; 
 			let initialPos = 35;
 			for (let i = 0; i<this.lives; i ++){
 				ctx.drawImage (liveImage, 20 + i*initialPos, initialPos-30, initialPos -5, initialPos -5);
@@ -219,6 +236,8 @@ class Game {
 			ctx.fillText (`You should train more...`, this.canvasWidth/2 -150, this.canvasHeight/2+100);
 
 		}	
+
+
 	
 	}
 
