@@ -1,11 +1,16 @@
-// conseguir elemento
+window.onload = () => {
+	game.init();
+}
+let canvas = document.getElementById("canvas1")
+
+/* // conseguir elemento
 let playButton = document.getElementById ("play");
 
 //cuando hago click en play llama a la funcion game.init
 playButton.addEventListener ("click", () => game.init ());
 
 //accedo al lienzo y lo guardo en una variable
-let canvas = document.getElementById ("canvas1");
+let canvas = document.getElementById ("canvas1"); */
 
 const game = {
 	
@@ -58,11 +63,13 @@ const game = {
 
 		if (this.game.gameState === gameState.gameOver){ 
 			cancelAnimationFrame (this.intervalId);
+			setTimeout ( () => 	game.init(), 3000) 
 		}
 
 		if (this.game.gameState === gameState.gameCompleted){ 
-
 			cancelAnimationFrame (this.intervalId);
+			setTimeout ( () => 	game.init(), 3000) 
+			
 		}
 
 		if (this.game.gameState === gameState.pause ){

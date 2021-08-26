@@ -14,6 +14,9 @@ class Paddle {
 		this.canvasWidth = game.canvasWidth;
 		this.canvasHeight = game.canvasHeight;
 
+		this.image = new Image;
+		this.image.src = `/assets/images/paddle.png`
+
 	}
 
 	reset () {
@@ -24,8 +27,10 @@ class Paddle {
 
 	draw(ctx) {
 		
-	ctx.fillStyle = "green";
-	ctx.fillRect (this.position.x, this.position.y, this.width, this.height);
+	//ctx.fillStyle = "green";
+	//ctx.fillRect (this.position.x, this.position.y, this.width, this.height);
+
+	ctx.drawImage (this.image, this.position.x, this.position.y, this.width, this.height);
 	}
 
 	moveLeft(){

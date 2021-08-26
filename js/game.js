@@ -15,7 +15,7 @@ class Game {
 		this.paddle = new Paddle (this);
 		this.ball = new Ball (this);
 		this.goku = new Goku (this);
-		this.kame = new Kame (this);
+		//this.kame = new Kame (this);
 		new InputHandler (this.paddle, this); 
 		this.gameObjects = [];
 		this.bricks = [];
@@ -32,13 +32,18 @@ class Game {
 		//this.backgroundImage.src = `https://raw.githubusercontent.com/yoelmartinfornieles/prj-dbzArkanoid/main/assets/images/background${this.currentLevel}.jpeg`;
 		//this.backgroundImage.src = `https://raw.githubusercontent.com/yoelmartinfornieles/prj-dbzArkanoid/main/assets/images/background1.png`;
 		this.backgroundImage.src = `/assets/images/background1.png`;
+		this.liveImage = new Image ();
+		this.liveImage.src = "https://raw.githubusercontent.com/yoelmartinfornieles/prj-dbzArkanoid/main/assets/images/lives.png"; 
 		this.ctx = undefined;
 	}
 
 	start () {
-		if (this.gameState !== gameState.menu && this.gameState !== gameState.newLevel) {
-			return;
-		}
+		if (this.gameState !== gameState.menu && 
+			this.gameState !== gameState.newLevel
+			)	 
+			{
+				return;
+			}
 
 		//crear multiples bricks
 		this.bricks = buildLevel (this, this.levels[this.currentLevel]);
@@ -138,11 +143,9 @@ class Game {
 		//Life draw
 
 		if(this.gameState === gameState.running || this.gameState === gameState.pause) {
-			let liveImage = new Image ();
-			liveImage.src = "https://raw.githubusercontent.com/yoelmartinfornieles/prj-dbzArkanoid/main/assets/images/lives.png"; 
 			let initialPos = 35;
 			for (let i = 0; i<this.lives; i ++){
-				ctx.drawImage (liveImage, 20 + i*initialPos, initialPos-30, initialPos -5, initialPos -5);
+				ctx.drawImage (this.liveImage, 20 + i*initialPos, initialPos-30, initialPos -5, initialPos -5);
 			}
 		}
 
