@@ -5,7 +5,6 @@ class PowerUp {
 		this.canvasHeight = game.canvasHeight;
 		this.image = new Image();
 		this.image.src = "https://raw.githubusercontent.com/yoelmartinfornieles/prj-dbzArkanoid/main/assets/images/radar.png"
-		//this.image.src = `https://raw.githubusercontent.com/yoelmartinfornieles/prj-dbzArkanoid/main/assets/images/radar.png`
 		this.position = position;
 		this.width = 30, 
 		this.height = 40,

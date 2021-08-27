@@ -39,23 +39,29 @@ class Game {
 		this.mainSong.src = "https://raw.githubusercontent.com/yoelmartinfornieles/prj-dbzArkanoid/main/assets/sounds/main song.mp3"
 		this.startAudio = new Audio();
 		this.startAudio.src = "https://raw.githubusercontent.com/yoelmartinfornieles/prj-dbzArkanoid/main/assets/sounds/gamestart.ogg"
-		this.gamecompletedAudio = new Audio ();
-		this.gamecompletedAudio.src = "https://raw.githubusercontent.com/yoelmartinfornieles/prj-dbzArkanoid/main/assets/sounds/start.mp3"
-
+		this.dragonBall = new Audio ();
+		this.dragonBall.src = "https://raw.githubusercontent.com/yoelmartinfornieles/prj-dbzArkanoid/main/assets/sounds/start.mp3"
+		this.gameOverAudio = new Audio ();
+		this.gameOverAudio.src = "https://raw.githubusercontent.com/yoelmartinfornieles/prj-dbzArkanoid/main/assets/sounds/gameover.ogg"
+		this.gameCompletedAudio = new Audio ();
+		this.gameCompletedAudio.src = "https://raw.githubusercontent.com/yoelmartinfornieles/prj-dbzArkanoid/main/assets/sounds/gameending.mp3"
+		this.levelAudio = new Audio ();
 	}
 
 	start () {
+		this.levelAudio.src = `https://raw.githubusercontent.com/yoelmartinfornieles/prj-dbzArkanoid/main/assets/sounds/maintheme${this.currentLevel}.mp3`
 		this.startAudio.play ();
-		this.gamecompletedAudio.play();
+		this.dragonBall.play ();
 		if (this.gameState !== gameState.menu && 
 			this.gameState !== gameState.newLevel
 			)	 
 			{ 
 				return;
 			}
-		this.startAudio.play ();
 		//crear multiples bricks
 		this.bricks = buildLevel (this, this.levels[this.currentLevel]);
+
+		this.levelAudio.play ();
 
 		this.ball.reset ();
 		this.paddle.reset ();
@@ -69,6 +75,7 @@ class Game {
 	update (deltaTime) {
 
 		if (this.lives === 0){
+			this.gameOverAudio.play ();
 			this.gameState = gameState.gameOver;
 		}
 
@@ -85,10 +92,11 @@ class Game {
 		if (this.bricks.length === 0) {
 
 			this.currentLevel++;
+			this.levelAudio.pause ();
 			this.gameState = gameState.newLevel;
 
 			if (this.levels.length <= this.currentLevel) {
-				console.log ("gameFinished")
+				//console.log ("gameFinished")
 				this.gameState = gameState.gameCompleted;	
 /* 				console.log ("should be gameCompleted: " +this.gameState)
 				console.log ("and should match: "+ gameState.gameCompleted)
@@ -98,7 +106,7 @@ class Game {
 					game.ctx.clearRect(0, 0, this.canvasWidth, this.canvasHeight);
 					game.ctx.drawImage(this.gameCompletedImage,0,0,this.canvasWidth, this.canvasHeight);
 					
-					this.gamecompletedAudio.play ();
+					this.gameCompletedAudio.play ();
 
 					game.ctx.font = "45px DBZfont";
 					game.ctx.strokeStyle = "black";
@@ -130,7 +138,7 @@ class Game {
 			this.bricks.push (powerUp);
 		}
 
-		if (deltaTime % 3000 === Math.floor(Math.random () * 10)){
+		if (deltaTime % 1400 === Math.floor(Math.random () * 10)){
 			let extraLife = new ExtraLife (this, {x: Math.floor(( Math.random()*(this.canvasWidth-80))), y:Math.floor(( Math.random()*(this.canvasHeight)-80))});
 			this.bricks.push (extraLife);
 		}

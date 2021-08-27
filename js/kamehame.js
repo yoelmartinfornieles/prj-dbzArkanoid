@@ -15,8 +15,8 @@ class Kame {
 	}
 
 	update () {
-		console.log ("refreshcounter: " + this.refreshCounter)
-		console.log ("frameCounter: " + this.frameCounter)
+		//console.log ("refreshcounter: " + this.refreshCounter)
+		//console.log ("frameCounter: " + this.frameCounter)
 
 		this.refreshCounter ++;
 	}
