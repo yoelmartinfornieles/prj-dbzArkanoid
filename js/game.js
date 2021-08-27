@@ -50,8 +50,8 @@ class Game {
 	start () {
 		this.gameCompletedAudio.pause();
 		this.gameOverSong.pause();
+		this.levelAudio.pause ();
 
-		this.levelAudio.src = `https://raw.githubusercontent.com/yoelmartinfornieles/prj-dbzArkanoid/main/assets/sounds/maintheme${this.currentLevel + 1}.mp3`
 		this.startAudio.play ();
 		if (this.gameState !== gameState.menu && 
 			this.gameState !== gameState.newLevel
@@ -62,6 +62,7 @@ class Game {
 		//crear multiples bricks
 		this.bricks = buildLevel (this, this.levels[this.currentLevel]);
 
+		this.levelAudio.src = `https://raw.githubusercontent.com/yoelmartinfornieles/prj-dbzArkanoid/main/assets/sounds/maintheme${this.currentLevel + 1}.mp3`
 		this.levelAudio.play ();
 
 		this.ball.reset ();
@@ -137,12 +138,12 @@ class Game {
 
 		if (deltaTime % 2000 === Math.floor(Math.random () * 10)){
 			//console.log ("HADOUKEN!")
-			let powerUp = new PowerUp (this, {x: Math.floor(( Math.random()*(this.canvasWidth-80))), y:Math.floor(( Math.random()*(this.canvasHeight)-80))});
+			let powerUp = new PowerUp (this, {x: Math.floor(( Math.random()*(this.canvasWidth-80))), y:0});
 			this.bricks.push (powerUp);
 		}
 
 		if (deltaTime % 1400 === Math.floor(Math.random () * 10)){
-			let extraLife = new ExtraLife (this, {x: Math.floor(( Math.random()*(this.canvasWidth-80))), y:Math.floor(( Math.random()*(this.canvasHeight)-80))});
+			let extraLife = new ExtraLife (this, {x: Math.floor(( Math.random()*(this.canvasWidth-80))), y:0 });
 			this.bricks.push (extraLife);
 		}
 

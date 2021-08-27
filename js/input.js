@@ -2,6 +2,10 @@ class InputHandler {
 	constructor (paddle, game){
 		this.dragonBall = new Audio ();
 		this.dragonBall.src = "https://raw.githubusercontent.com/yoelmartinfornieles/prj-dbzArkanoid/main/assets/sounds/start.mp3"
+
+		this.pauseSound = new Audio ();
+		this.pauseSound.src = "https://raw.githubusercontent.com/yoelmartinfornieles/prj-dbzArkanoid/main/assets/sounds/pause.mp3"
+
 		document.addEventListener('keydown', event => {
 			//alert (event.keyCode);
 			switch (event.keyCode){
@@ -19,7 +23,7 @@ class InputHandler {
 				break;
 
 				case 54:
-					let powerUp = new PowerUp (game, {x: Math.floor(( Math.random()*game.canvasWidth)), y:Math.floor(( Math.random()*game.canvasWidth))});
+					let powerUp = new PowerUp (game, {x: Math.floor(( Math.random()*game.canvasWidth)), y:0});
 					//console.log("hello: " + powerUp.position.x)
 					game.bricks.push (powerUp);
 				break;
@@ -48,6 +52,7 @@ class InputHandler {
 				break;
 
 				case 27:
+				this.pauseSound.play();
 				game.togglePause ();
 				break;
 

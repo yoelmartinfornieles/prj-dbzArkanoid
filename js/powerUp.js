@@ -21,7 +21,7 @@ class PowerUp {
 
 	update (deltatime) {
 
-		this.position.y += 3 ;
+		this.position.y += 2 ;
 
 		if (detectCollision (this.game.ball, this)) {
 			this.game.ball.speed.y = -this.game.ball.speed.y;
