@@ -3,10 +3,12 @@ class Ball {
 		this.game = game;
 		this.canvasWidth = game.canvasWidth;
 		this.canvasHeight = game.canvasHeight;
-		this.image = new Image;
-		this.image.src = `https://raw.githubusercontent.com/yoelmartinfornieles/prj-dbzArkanoid/main/assets/images/ball${Math.floor(Math.random() * 1)}.png`
 		this.radius = 36;
 		this.reset();
+		this.collisionAudio = new Audio();
+		this.collisionAudio.src = "/assets/sounds/paddle.wav"
+		this.lifeLossAudio = new Audio();
+		this.lifeLossAudio.src = "/assets/sounds/lifeloss.ogg"
 	}
 
 reset () {
@@ -15,6 +17,10 @@ reset () {
 }
 
 draw (ctx) {
+	this.image = new Image;
+	//this.image.src = `https://raw.githubusercontent.com/yoelmartinfornieles/prj-dbzArkanoid/main/assets/images/ball${this.game.currentLevel + 1}.png`
+	this.image.src = `/assets/images/ball${this.game.currentLevel+1}.png`
+	console.log ("this: " + this.game.currentLevel)
 	ctx.drawImage (this.image, this.position.x, this.position.y, this.radius, this.radius);
 }
 
@@ -36,6 +42,7 @@ update (deltatime) {
 
 	//Colision con la pared inferior
 	if (this.position.y > this.canvasHeight - this.radius){
+		this.lifeLossAudio.play ();
 		this.game.lives --;
 		this.reset ();
 		this.game.paddle.reset ();
@@ -44,6 +51,7 @@ update (deltatime) {
 	// Y si se pega contra el paddle?	
 
 	if (detectCollision (this, this.game.paddle)) {
+		this.collisionAudio.play ();
 		this.speed.y = -this.speed.y;
 		//this.speed.x = -this.speed.x;
 		//this.position.y = this.game.paddle.position.y - this.radius;

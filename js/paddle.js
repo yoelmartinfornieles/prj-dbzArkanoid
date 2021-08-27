@@ -17,6 +17,7 @@ class Paddle {
 		this.image = new Image;
 		this.image.src = `/assets/images/paddle.png`
 
+
 	}
 
 	reset () {

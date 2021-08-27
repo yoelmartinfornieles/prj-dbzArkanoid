@@ -10,6 +10,8 @@ class Brick {
 		this.height = 60,
 		this.leftImpacts = impacts;
 		this.destroyed = false;
+		this.collisionAudio = new Audio ();
+		this.collisionAudio.src = "/assets/sounds/bRick.wav"
 	}
 
 	draw (ctx) {
@@ -20,6 +22,7 @@ class Brick {
 		//console.log (this)
 		//console.log ("colision: " + detectCollision (this.game.ball, this))
 		if (detectCollision (this.game.ball, this)) {
+			this.collisionAudio.play ();
 			this.game.ball.speed.y = -this.game.ball.speed.y;
 			//this.game.ball.speed.x = -this.game.ball.speed.x;
 			this.leftImpacts--;
