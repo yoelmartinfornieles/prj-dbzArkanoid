@@ -1,5 +1,7 @@
 class InputHandler {
 	constructor (paddle, game){
+		this.dragonBall = new Audio ();
+		this.dragonBall.src = "https://raw.githubusercontent.com/yoelmartinfornieles/prj-dbzArkanoid/main/assets/sounds/start.mp3"
 		document.addEventListener('keydown', event => {
 			//alert (event.keyCode);
 			switch (event.keyCode){
@@ -50,6 +52,7 @@ class InputHandler {
 				break;
 
 				case 83: 
+				this.dragonBall.play ();
 				game.start();
 				break;
 			}	

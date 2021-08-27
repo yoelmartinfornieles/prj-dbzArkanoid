@@ -35,23 +35,24 @@ class Game {
 		this.liveImage = new Image ();
 		this.liveImage.src = "https://raw.githubusercontent.com/yoelmartinfornieles/prj-dbzArkanoid/main/assets/images/lives.png"; 
 		this.ctx = undefined;
-		this.mainSong = new Audio();
-		this.mainSong.src = "https://raw.githubusercontent.com/yoelmartinfornieles/prj-dbzArkanoid/main/assets/sounds/main song.mp3"
 		this.startAudio = new Audio();
 		this.startAudio.src = "https://raw.githubusercontent.com/yoelmartinfornieles/prj-dbzArkanoid/main/assets/sounds/gamestart.ogg"
-		this.dragonBall = new Audio ();
-		this.dragonBall.src = "https://raw.githubusercontent.com/yoelmartinfornieles/prj-dbzArkanoid/main/assets/sounds/start.mp3"
 		this.gameOverAudio = new Audio ();
 		this.gameOverAudio.src = "https://raw.githubusercontent.com/yoelmartinfornieles/prj-dbzArkanoid/main/assets/sounds/gameover.ogg"
 		this.gameCompletedAudio = new Audio ();
 		this.gameCompletedAudio.src = "https://raw.githubusercontent.com/yoelmartinfornieles/prj-dbzArkanoid/main/assets/sounds/gameending.mp3"
 		this.levelAudio = new Audio ();
+		this.gameOverSong = new Audio ();
+		this.gameOverSong.src = "https://raw.githubusercontent.com/yoelmartinfornieles/prj-dbzArkanoid/main/assets/sounds/gameoversong.mp3"
+
 	}
 
 	start () {
-		this.levelAudio.src = `https://raw.githubusercontent.com/yoelmartinfornieles/prj-dbzArkanoid/main/assets/sounds/maintheme${this.currentLevel}.mp3`
+		this.gameCompletedAudio.pause();
+		this.gameOverSong.pause();
+
+		this.levelAudio.src = `https://raw.githubusercontent.com/yoelmartinfornieles/prj-dbzArkanoid/main/assets/sounds/maintheme${this.currentLevel + 1}.mp3`
 		this.startAudio.play ();
-		this.dragonBall.play ();
 		if (this.gameState !== gameState.menu && 
 			this.gameState !== gameState.newLevel
 			)	 
@@ -75,7 +76,8 @@ class Game {
 	update (deltaTime) {
 
 		if (this.lives === 0){
-			this.gameOverAudio.play ();
+			this.levelAudio.pause ();
+			this.gameOverSong.play ();
 			this.gameState = gameState.gameOver;
 		}
 
@@ -106,6 +108,7 @@ class Game {
 					game.ctx.clearRect(0, 0, this.canvasWidth, this.canvasHeight);
 					game.ctx.drawImage(this.gameCompletedImage,0,0,this.canvasWidth, this.canvasHeight);
 					
+					this.levelAudio.pause ();
 					this.gameCompletedAudio.play ();
 
 					game.ctx.font = "45px DBZfont";
