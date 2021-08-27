@@ -4,7 +4,7 @@ class Kame {
 		this.height = 130;
 		this.position = {x: 10 , y: 160};
 		this.animation = new Image ();
-		this.animation.src = "/assets/animations/kame.png";
+		this.animation.src = "https://raw.githubusercontent.com/yoelmartinfornieles/prj-dbzArkanoid/main/assets/animations/kame.png";
 		this.spriteWidth = 35;
 		this.spriteHeight = 80;
 		this.spriteX = 0;

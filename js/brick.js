@@ -11,7 +11,7 @@ class Brick {
 		this.leftImpacts = impacts;
 		this.destroyed = false;
 		this.collisionAudio = new Audio ();
-		this.collisionAudio.src = "/assets/sounds/bRick.wav"
+		this.collisionAudio.src = "https://raw.githubusercontent.com/yoelmartinfornieles/prj-dbzArkanoid/main/assets/sounds/bRick.wav"
 	}
 
 	draw (ctx) {

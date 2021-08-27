@@ -15,7 +15,7 @@ class Paddle {
 		this.canvasHeight = game.canvasHeight;
 
 		this.image = new Image;
-		this.image.src = `/assets/images/paddle.png`
+		this.image.src = `https://raw.githubusercontent.com/yoelmartinfornieles/prj-dbzArkanoid/main/assets/images/paddle.png`
 
 
 	}

@@ -31,16 +31,16 @@ class Game {
 		this.backgroundImage = new Image ();
 		//this.backgroundImage.src = `https://raw.githubusercontent.com/yoelmartinfornieles/prj-dbzArkanoid/main/assets/images/background${this.currentLevel}.jpeg`;
 		//this.backgroundImage.src = `https://raw.githubusercontent.com/yoelmartinfornieles/prj-dbzArkanoid/main/assets/images/background1.png`;
-		this.backgroundImage.src = `/assets/images/background1.png`;
+		this.backgroundImage.src = `https://raw.githubusercontent.com/yoelmartinfornieles/prj-dbzArkanoid/main/assets/images/background1.png`;
 		this.liveImage = new Image ();
 		this.liveImage.src = "https://raw.githubusercontent.com/yoelmartinfornieles/prj-dbzArkanoid/main/assets/images/lives.png"; 
 		this.ctx = undefined;
 		this.mainSong = new Audio();
-		this.mainSong.src = "/assets/sounds/main song.mp3"
+		this.mainSong.src = "https://raw.githubusercontent.com/yoelmartinfornieles/prj-dbzArkanoid/main/assets/sounds/main song.mp3"
 		this.startAudio = new Audio();
-		this.startAudio.src = "/assets/sounds/gamestart.ogg"
+		this.startAudio.src = "https://raw.githubusercontent.com/yoelmartinfornieles/prj-dbzArkanoid/main/assets/sounds/gamestart.ogg"
 		this.gamecompletedAudio = new Audio ();
-		this.gamecompletedAudio.src = "/assets/sounds/start.mp3"
+		this.gamecompletedAudio.src = "https://raw.githubusercontent.com/yoelmartinfornieles/prj-dbzArkanoid/main/assets/sounds/start.mp3"
 
 	}
 
@@ -151,7 +151,7 @@ class Game {
 
 		if (this.gameState !== gameState.gameCompleted){
 
-		this.backgroundImage.src = `/assets/images/background${this.currentLevel+1}.png`;
+		this.backgroundImage.src = `https://raw.githubusercontent.com/yoelmartinfornieles/prj-dbzArkanoid/main/assets/images/background${this.currentLevel+1}.png`;
 
 		game.ctx.drawImage(this.backgroundImage,0,0,this.canvasWidth, this.canvasHeight);
 

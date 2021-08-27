@@ -4,7 +4,7 @@ class Goku {
 		this.height = 130;
 		this.position = {x: 10 , y: 160};
 		this.animation = new Image ();
-		this.animation.src = "/assets/animations/goku.png";
+		this.animation.src = "https://raw.githubusercontent.com/yoelmartinfornieles/prj-dbzArkanoid/main/assets/animations/goku.png";
 		this.spriteWidth = 40;
 		this.spriteHeight = 60;
 		this.spriteX = 0;

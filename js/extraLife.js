@@ -4,13 +4,13 @@ class ExtraLife {
 		this.canvasWidth = game.canvasWidth;
 		this.canvasHeight = game.canvasHeight;
 		this.image = new Image();
-		this.image.src = "/assets/images/extraLife.png"
+		this.image.src = "https://raw.githubusercontent.com/yoelmartinfornieles/prj-dbzArkanoid/main/assets/images/extraLife.png"
 		this.position = position;
 		this.width = 40, 
 		this.height = 40,
 		this.active = false;
 		this.extraLifeAudio = new Audio();
-		this.extraLifeAudio.src = "/assets/sounds/extralife.ogg"
+		this.extraLifeAudio.src = "https://raw.githubusercontent.com/yoelmartinfornieles/prj-dbzArkanoid/main/assets/sounds/extralife.ogg"
 	}
 
 	draw (ctx) {

@@ -6,9 +6,9 @@ class Ball {
 		this.radius = 36;
 		this.reset();
 		this.collisionAudio = new Audio();
-		this.collisionAudio.src = "/assets/sounds/paddle.wav"
+		this.collisionAudio.src = "https://raw.githubusercontent.com/yoelmartinfornieles/prj-dbzArkanoid/main/assets/sounds/paddle.wav"
 		this.lifeLossAudio = new Audio();
-		this.lifeLossAudio.src = "/assets/sounds/lifeloss.ogg"
+		this.lifeLossAudio.src = "https://raw.githubusercontent.com/yoelmartinfornieles/prj-dbzArkanoid/main/assets/sounds/lifeloss.ogg"
 	}
 
 reset () {
@@ -19,7 +19,7 @@ reset () {
 draw (ctx) {
 	this.image = new Image;
 	//this.image.src = `https://raw.githubusercontent.com/yoelmartinfornieles/prj-dbzArkanoid/main/assets/images/ball${this.game.currentLevel + 1}.png`
-	this.image.src = `/assets/images/ball${this.game.currentLevel+1}.png`
+	this.image.src = `https://raw.githubusercontent.com/yoelmartinfornieles/prj-dbzArkanoid/main/assets/images/ball${this.game.currentLevel+1}.png`
 	console.log ("this: " + this.game.currentLevel)
 	ctx.drawImage (this.image, this.position.x, this.position.y, this.radius, this.radius);
 }

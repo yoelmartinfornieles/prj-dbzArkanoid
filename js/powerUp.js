@@ -4,14 +4,14 @@ class PowerUp {
 		this.canvasWidth = game.canvasWidth;
 		this.canvasHeight = game.canvasHeight;
 		this.image = new Image();
-		this.image.src = "/assets/images/radar.png"
+		this.image.src = "https://raw.githubusercontent.com/yoelmartinfornieles/prj-dbzArkanoid/main/assets/images/radar.png"
 		//this.image.src = `https://raw.githubusercontent.com/yoelmartinfornieles/prj-dbzArkanoid/main/assets/images/radar.png`
 		this.position = position;
 		this.width = 30, 
 		this.height = 40,
 		this.active = false;
 		this.powerUpAudio = new Audio ();
-		this.powerUpAudio.src = "/assets/sounds/powerup.ogg"
+		this.powerUpAudio.src = "https://raw.githubusercontent.com/yoelmartinfornieles/prj-dbzArkanoid/main/assets/sounds/powerup.ogg"
 	}
 
 	draw (ctx) {
