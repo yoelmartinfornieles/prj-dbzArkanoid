@@ -27,6 +27,8 @@ Javascript, canvas, HTML, CSS
 
 - [@yoelmartinfornieles](https://github.com/yoelmartinfornieles)
 
+[![Anurag's GitHub stats](https://github-readme-stats.vercel.app/api?username=yoelmartinfornieles)](https://github.com/yoelmartinfornieles/prj-dbzArkanoid)
+
   
 ## Usage/Examples
 
