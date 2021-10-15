@@ -4,8 +4,6 @@
 This game is a port of the classical Arkanoid game, with DB graphics.
 The idea was to practice with js as much as possible, and thanks to canvas this have been a funny task. I hope you enjoy playing it as much as I did enjoyed playing it!
 
-[![Anurag's GitHub stats](https://github-readme-stats.vercel.app/api?username=yoelmartinfornieles)](https://github.com/yoelmartinfornieles/prj-dbzArkanoid)
-
 ## Screenshots
 
 ![App Screenshot](https://media-exp1.licdn.com/dms/image/C4D22AQFBWX3JtbdLxw/feedshare-shrink_2048_1536/0/1632390296482?e=1637193600&v=beta&t=E78gZiZmjh2DyJYnn2x8kN6Gb5zwj155tfS3eonbXJM)
